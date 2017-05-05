@@ -6,8 +6,5 @@ import org.tec.ce.MediTEC.resources.Doctors;
 public class AppManager extends ResourceConfig {
 	public AppManager(){
 		register(Doctors.class);
-		register(Doctor.class);
-		System.out.print("hola");
 	}
-//segunda prueba
 }
