@@ -8,5 +8,5 @@ public class AppManager extends ResourceConfig {
 		register(Doctors.class);
 		System.out.print("hola");
 	}
-
-}//probando
+//segunda prueba
+}
