@@ -5,6 +5,7 @@ import org.tec.ce.MediTEC.resources.Doctors;
 
 public class AppManager extends ResourceConfig {
 	public AppManager(){
+		//hola mundo
 		register(Doctors.class);
 	}
 }
