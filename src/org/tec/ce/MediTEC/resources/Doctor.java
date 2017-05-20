@@ -68,6 +68,17 @@ public class Doctor {
 	}
 	
 	/**
+	 * Metodo para obtener la lista de citas
+	 * @return Json con la lista de citas
+	 */
+	@GET
+	@Path("/get-appointments")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getAppointments(){
+		return Response.ok().entity(this.doctor.getAppointmentsList()).build();
+	}
+	
+	/**
 	 * Metodo para agregar un nuevo paciente a la lista
 	 * @param patient Paciente a agregar
 	 * @return 200 si se realizo, en caso contrario error 400
@@ -104,6 +115,17 @@ public class Doctor {
 	}
 	
 	/**
+	 * Metodo para obtener la lista de pacientes
+	 * @return Json con la lista de pacientes
+	 */
+	@GET
+	@Path("/get-patients")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getPatients(){
+		return Response.ok().entity(this.doctor.getPatientsList()).build();
+	}
+	
+	/**
 	 * Metodo para añadir un nuevo comentario
 	 * @param commentary Comentario a añadir
 	 * @return 200 si se realizo, en caso contrario error 400
@@ -119,5 +141,16 @@ public class Doctor {
 		} else{
 			return Response.status(400).build();
 		}
+	}
+	
+	/**
+	 * Metodo para obtener la lista de comentarios
+	 * @return Json con la lista de comentarios
+	 */
+	@GET
+	@Path("/get-commentaries")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getCommentaries(){
+		return Response.ok().entity(this.doctor.getCommentaries()).build();
 	}
 }

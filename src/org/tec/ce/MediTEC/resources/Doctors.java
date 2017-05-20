@@ -46,7 +46,7 @@ public class Doctors {
 	@Path("/cc")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getCC(){
-		PatientDTO app = new PatientDTO("Arturo", 30, 30304, 300);
+		DoctorDTO app = new DoctorDTO(3030);
 		return Response.ok().entity(app).build();
 	}
 	 
@@ -80,7 +80,7 @@ public class Doctors {
 			this.updateDoctorsTree();
 			return Response.ok().build();
 		} else{
-			return Response.status(404).build();
+			return Response.status(400).build(); //Bad request
 		}
 	}
 	

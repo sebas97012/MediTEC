@@ -1,9 +1,14 @@
 package org.tec.ce.DataStructures.SplayTree;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+
 /**
  * Created by Arturo on 8/5/2017.
  */
 public class SplayNode<T extends Comparable>{
+	@JsonTypeInfo( use = Id.CLASS, include = As.WRAPPER_OBJECT)
     private T data;
     private SplayNode left;
     private SplayNode right;
@@ -12,10 +17,10 @@ public class SplayNode<T extends Comparable>{
      * Constructor
      * @param data Informacion que va a almacenar el nodo
      */
+    
     public SplayNode(T data){
         this(data, null, null);
     }
-
     /**
      * Constructor
      * @param data Informacion que va a almacenar el nodo

@@ -20,7 +20,7 @@ public class Patient {
 	}
 	
 	/**
-	 * Metodo para obtener la instancia del doctor
+	 * Metodo para obtener la instancia del paciente
 	 * @return La instancia del doctor en formato Json
 	 */
 	@GET
@@ -65,6 +65,17 @@ public class Patient {
 		}
 	}
 	
+	/**
+	 * Metodo para obtener la lista de citas
+	 * @return La lista de citas en formato Json
+	 */
+	@GET
+	@Path("/get-appointments")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getAppointments(){
+		return Response.ok().entity(this.patient.getAppointmentList()).build();
+	}
+	
 	@PUT
 	@Path("/add-tocasefile")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -89,6 +100,17 @@ public class Patient {
 		} else{
 			return Response.status(400).build(); //NotFound
 		}
+	}
+	
+	/**
+	 * Metodo para obtener el case file del paciente
+	 * @return El CaseFile en formato Json
+	 */
+	@GET
+	@Path("/get-casefile")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getCaseFile(){
+		return Response.ok().entity(this.patient.getCaseFile()).build();
 	}
 	
 }
