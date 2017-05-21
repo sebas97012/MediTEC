@@ -1,13 +1,13 @@
 package org.tec.ce.MediTEC.dto;
 
-import org.tec.ce.DataStructures.BinaryTree.BinaryTree;
+import org.tec.ce.DataStructures.LinkedList.LinkedList;
 
 public class Appointment implements Comparable<Appointment>{
-	private DoctorDTO assignedDoctor;
-	private PatientDTO patient;
+	private int assignedDoctor;
+	private int patient;
 	private String date;
 	private String hour;
-	private BinaryTree<ClinicalCase> clinicalCase;
+	private ClinicalCase clinicalCase;
 	private int cost;
 	private int id;
 	
@@ -15,25 +15,25 @@ public class Appointment implements Comparable<Appointment>{
 		
 	}
 	
-	public Appointment(DoctorDTO doctor, PatientDTO patient, String date, String hour, int cost, int id){
-		this.assignedDoctor = doctor;
-		this.patient = patient;
+	public Appointment(int doctorID, int patientID, String date, String hour, int cost, int id, LinkedList<String> symptoms){
+		this.assignedDoctor = doctorID;
+		this.patient = patientID;
 		this.date = date;
 		this.hour = hour;
 		this.cost = cost;
 		this.id = id;
-		this.clinicalCase = new BinaryTree<ClinicalCase>();
+		this.clinicalCase = new ClinicalCase(patientID, id, symptoms);
 	}
 
-	public DoctorDTO getAssignedDoctor() {
+	public int getAssignedDoctor() {
 		return assignedDoctor;
 	}
 
-	public void setAssignedDoctor(DoctorDTO assignedDoctor) {
-		this.assignedDoctor = assignedDoctor;
+	public void setAssignedDoctor(int assignedDoctorID) {
+		this.assignedDoctor = assignedDoctorID;
 	}
 
-	public PatientDTO getPatient() {
+	public int getPatient() {
 		return patient;
 	}
 
@@ -53,7 +53,7 @@ public class Appointment implements Comparable<Appointment>{
 		this.hour = hour;
 	}
 
-	public BinaryTree<ClinicalCase> getClinicalCase() {
+	public ClinicalCase getClinicalCase() {
 		return clinicalCase;
 	}
 
@@ -63,14 +63,6 @@ public class Appointment implements Comparable<Appointment>{
 
 	public int getId() {
 		return id;
-	}
-	
-	public void addToClinicalCase(ClinicalCase clinicalCase){
-		this.clinicalCase.insert(clinicalCase);
-	}
-	
-	public void deleteFromClinicalCase(ClinicalCase clinicalCase){
-		this.clinicalCase.remove(clinicalCase);
 	}
 
 	public int compareTo(Appointment appointment) {

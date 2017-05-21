@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.tec.ce.MediTEC.dto.Appointment;
+import org.tec.ce.MediTEC.dto.ClinicalCase;
 import org.tec.ce.MediTEC.dto.Commentary;
 import org.tec.ce.MediTEC.dto.DoctorDTO;
 import org.tec.ce.MediTEC.dto.PatientDTO;
@@ -152,5 +153,52 @@ public class Doctor {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getCommentaries(){
 		return Response.ok().entity(this.doctor.getCommentaries()).build();
+	}
+	
+	/**
+	 * Metodo para añadir un nuevo caso clinico a la lista
+	 * @param clinicalCase Caso que se desea agregar
+	 * @return
+	 */
+	@PUT
+	@Path("/add-clinicalcase")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response addClinicalCase(ClinicalCase clinicalCase){
+		if(clinicalCase != null){
+			this.doctor.addClinicalCase(clinicalCase);
+			Doctors.updateDoctorsTree();
+			return Response.ok().build();
+		} else{
+			return Response.status(400).build();
+		}
+	}
+	
+	/**
+	 * Metodo para eliminar un ClinicalCase
+	 * @param clinicalCase Caso a eliminar
+	 * @return
+	 */
+	@DELETE
+	@Path("/remove-clinicalcase")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response removeClinicalCase(ClinicalCase clinicalCase){
+		if(clinicalCase != null){
+			this.doctor.removeClinicalCase(clinicalCase);
+			Doctors.updateDoctorsTree();
+			return Response.ok().build();
+		} else{
+			return Response.status(400).build();
+		}
+	}
+	
+	/**
+	 * Metodo para obtener la lista de casos clinicos
+	 * @return
+	 */
+	@GET
+	@Path("/get-clinicalcases")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getClinicalCases(){
+		return Response.ok().entity(this.doctor.getClinicalCaseList()).build();
 	}
 }

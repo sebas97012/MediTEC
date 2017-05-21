@@ -1,6 +1,7 @@
 package org.tec.ce.MediTEC.dto;
 
 import org.tec.ce.DataStructures.AVLTree.AVLTree;
+import org.tec.ce.DataStructures.BinaryTree.BinaryTree;
 import org.tec.ce.DataStructures.LinkedList.LinkedList;
 import org.tec.ce.DataStructures.SplayTree.SplayTree;
 
@@ -9,6 +10,7 @@ public class DoctorDTO implements Comparable<DoctorDTO> {
 	private AVLTree<Appointment> appointmentsList;
 	private SplayTree<PatientDTO> patientsList;
 	private LinkedList<Commentary> commentaries;
+	private BinaryTree<ClinicalCase> clinicalCaseList;
 	
 	public DoctorDTO(){
 	
@@ -19,6 +21,7 @@ public class DoctorDTO implements Comparable<DoctorDTO> {
 		this.appointmentsList = new AVLTree<Appointment>();
 		this.patientsList = new SplayTree<PatientDTO>();
 		this.commentaries = new LinkedList<Commentary>();
+		this.clinicalCaseList = new BinaryTree<ClinicalCase>();
 	}
 
 	public int getId() {
@@ -55,6 +58,18 @@ public class DoctorDTO implements Comparable<DoctorDTO> {
 	
 	public void addCommentary(Commentary commentary){
 		this.commentaries.insertAtEnd(commentary);
+	}
+	
+	public void addClinicalCase(ClinicalCase clinicalCase){
+		this.clinicalCaseList.insert(clinicalCase);
+	}
+	
+	public void removeClinicalCase(ClinicalCase clinicalCase){
+		this.clinicalCaseList.remove(clinicalCase);
+	}
+	
+	public BinaryTree<ClinicalCase> getClinicalCaseList(){
+		return this.clinicalCaseList;
 	}
 
 	public int compareTo(DoctorDTO arg0) {

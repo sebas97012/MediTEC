@@ -16,11 +16,14 @@ import java.util.List;
 
 import javax.ws.rs.GET;
 
+import org.tec.ce.DataStructures.SplayTree.SplayNode;
 import org.tec.ce.DataStructures.SplayTree.SplayTree;
+import org.tec.ce.DataStructures.LinkedList.LinkedList;
 import org.tec.ce.MediTEC.FileXMLManager;
 import org.tec.ce.MediTEC.dto.Appointment;
 import org.tec.ce.MediTEC.dto.Commentary;
 import org.tec.ce.MediTEC.dto.DoctorDTO;
+import org.tec.ce.MediTEC.dto.ID;
 import org.tec.ce.MediTEC.dto.PatientDTO;
 
 @Path("/doctors")
@@ -45,14 +48,15 @@ public class Doctors {
 	@GET
 	@Path("/cc")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getCC(){
-		DoctorDTO app = new DoctorDTO(3030);
+	public Response getCC(@PathParam("IDsearch") int id){
+		DoctorDTO app = new DoctorDTO(id);
 		return Response.ok().entity(app).build();
 	}
 	 
 	public static void updateDoctorsTree(){
 		FileXMLManager.writeContent(doctorsTree, "doctorsTree.xml");
 	}
+	
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -95,4 +99,5 @@ public class Doctors {
 			throw new NotFoundException(Response.status(404).build());
 		}
 	}
+	
 }

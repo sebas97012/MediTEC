@@ -1,14 +1,23 @@
 package org.tec.ce.DataStructures.AVLTree;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+
 /**
  * Created by Arturo on 7/5/2017.
  */
 public class AVLNode<T extends Comparable<T>> {
+	@JsonTypeInfo( use = Id.CLASS, include = As.WRAPPER_OBJECT)
     private T data;
     private int balanceFactor;
     private AVLNode left;
     private AVLNode right;
 
+    public AVLNode(){
+    	
+    }
+    
     public AVLNode(T data){
         this.data = data;
         this.balanceFactor = 0;

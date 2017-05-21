@@ -1,13 +1,22 @@
 package org.tec.ce.DataStructures.BinaryTree;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+
 /**
  * Created by Arturo on 22/4/2017.
  */
 public class BinaryNode<T extends Comparable<T>>{
+	@JsonTypeInfo( use = Id.CLASS, include = As.WRAPPER_OBJECT)
     private T data;
     private BinaryNode left;
     private BinaryNode right;
 
+    public BinaryNode(){
+    	
+    }
+    
     /**
      * Constructor
      * @param data Informacion que va a almacenar el nodo
