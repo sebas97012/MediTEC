@@ -1,5 +1,7 @@
 package org.tec.ce.MediTEC.dto;
 
+import java.util.Date;
+
 import org.tec.ce.DataStructures.LinkedList.LinkedList;
 
 public class Appointment implements Comparable<Appointment>{

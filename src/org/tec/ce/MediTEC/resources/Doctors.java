@@ -49,7 +49,7 @@ public class Doctors {
 	@Path("/cc")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getCC(@PathParam("IDsearch") int id){
-		DoctorDTO app = new DoctorDTO(id);
+		Appointment app = new Appointment(3030, 9888, "10/5/2016", "13:00", 75000, 5050, new LinkedList<String>());
 		return Response.ok().entity(app).build();
 	}
 	 
