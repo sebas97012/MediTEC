@@ -49,7 +49,8 @@ public class Doctors {
 	@Path("/cc")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getCC(@PathParam("IDsearch") int id){
-		Appointment app = new Appointment(3030, 9888, "10/5/2016", "13:00", 75000, 5050, new LinkedList<String>());
+		//Appointment app = new Appointment(3030, 9888, "10/5/2016", "13:00", 75000, 5050, new LinkedList<String>());
+		DoctorDTO app = new DoctorDTO(3030);
 		return Response.ok().entity(app).build();
 	}
 	 
