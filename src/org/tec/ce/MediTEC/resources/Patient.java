@@ -38,6 +38,7 @@ public class Patient {
 	@Path("/add-appointment")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addAppointment(Appointment appointment){
+		System.out.println(appointment);
 		if(appointment != null){
 			this.patient.addAppointment(appointment);
 			Patients.updatePatientsTree();
