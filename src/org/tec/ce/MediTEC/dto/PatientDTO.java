@@ -10,6 +10,7 @@ public class PatientDTO implements Comparable<PatientDTO>{
 	private int phoneNumber;
 	private AVLTree<Appointment> appointmentList;
 	private LinkedList<Appointment> caseFile;
+	private String email;
 	
 	public PatientDTO(){
 		
@@ -68,6 +69,14 @@ public class PatientDTO implements Comparable<PatientDTO>{
 		this.caseFile.deleteElement(appointment);
 	}
 	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public int compareTo(PatientDTO patient) {
 		if(this.identificationNumber > patient.getIdentificationNumber()){
 			return 1;
