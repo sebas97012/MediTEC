@@ -1,5 +1,6 @@
 package org.tec.ce.MediTEC.dto;
 
+
 import java.util.StringTokenizer;
 
 public class Diary implements Comparable<Diary> {

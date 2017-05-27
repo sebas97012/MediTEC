@@ -1,5 +1,6 @@
 package org.tec.ce.MediTEC.dto;
 
+
 import org.tec.ce.DataStructures.AVLTree.AVLTree;
 import org.tec.ce.DataStructures.BinaryTree.BinaryTree;
 import org.tec.ce.DataStructures.LinkedList.LinkedList;

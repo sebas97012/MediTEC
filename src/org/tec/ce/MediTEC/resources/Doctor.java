@@ -90,6 +90,7 @@ public class Doctor {
 		return Response.ok().entity(this.doctor.getSchedule()).build();
 	}
 	
+	
 	/**
 	 * Metodo para agregar un nuevo paciente a la lista
 	 * @param patient Paciente a agregar
