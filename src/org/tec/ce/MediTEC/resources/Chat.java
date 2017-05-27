@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 
 import org.tec.ce.DataStructures.LinkedList.LinkedList;
 import org.tec.ce.MediTEC.dto.MessageDTO;
-
+ 
 @Path("/chat")
 public class Chat {
 	private static LinkedList<MessageDTO> chat = new LinkedList<MessageDTO>();

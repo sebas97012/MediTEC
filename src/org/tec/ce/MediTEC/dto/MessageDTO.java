@@ -2,7 +2,7 @@ package org.tec.ce.MediTEC.dto;
 
  
 public class MessageDTO implements Comparable<MessageDTO> {
-	
+	  
 	private String message;
 	private int id;
 
