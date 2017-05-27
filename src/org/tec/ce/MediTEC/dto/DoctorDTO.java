@@ -8,6 +8,8 @@ import org.tec.ce.DataStructures.SplayTree.SplayTree;
 
 public class DoctorDTO implements Comparable<DoctorDTO> {
 	private int id;
+	private String name;
+	private String password;
 	private AVLTree<Appointment> appointmentsList;
 	private SplayTree<PatientDTO> patientsList;
 	private LinkedList<Commentary> commentaries;
@@ -18,8 +20,10 @@ public class DoctorDTO implements Comparable<DoctorDTO> {
 	
 	}
 	
-	public DoctorDTO(int id){
+	public DoctorDTO(int id, String name, String password){
 		this.id = id;
+		this.name = name;
+		this.password = password;
 		this.appointmentsList = new AVLTree<Appointment>();
 		this.patientsList = new SplayTree<PatientDTO>();
 		this.commentaries = new LinkedList<Commentary>();
@@ -81,6 +85,22 @@ public class DoctorDTO implements Comparable<DoctorDTO> {
 		return this.clinicalCaseList;
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public int compareTo(DoctorDTO arg0) {
 		if(this.id > arg0.getId()){
 			return 1;
