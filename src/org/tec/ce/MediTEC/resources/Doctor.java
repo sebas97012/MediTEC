@@ -79,6 +79,10 @@ public class Doctor {
 		return Response.ok().entity(this.doctor.getAppointmentsList()).build();
 	}
 	
+	/**
+	 * Metodo para obtener la lista de citas del dia
+	 * @return Json con la lista de citas del dia
+	 */
 	@GET
 	@Path("/get-diary")
 	@Produces(MediaType.APPLICATION_JSON)
