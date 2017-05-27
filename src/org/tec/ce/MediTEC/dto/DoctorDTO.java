@@ -11,7 +11,8 @@ public class DoctorDTO implements Comparable<DoctorDTO> {
 	private SplayTree<PatientDTO> patientsList;
 	private LinkedList<Commentary> commentaries;
 	private BinaryTree<ClinicalCase> clinicalCaseList;
-	
+	private LinkedList<Diary> schedule;
+
 	public DoctorDTO(){
 	
 	}
@@ -22,6 +23,7 @@ public class DoctorDTO implements Comparable<DoctorDTO> {
 		this.patientsList = new SplayTree<PatientDTO>();
 		this.commentaries = new LinkedList<Commentary>();
 		this.clinicalCaseList = new BinaryTree<ClinicalCase>();
+		this.schedule = new LinkedList<Diary>();
 	}
 
 	public int getId() {
@@ -34,10 +36,16 @@ public class DoctorDTO implements Comparable<DoctorDTO> {
 	
 	public void addAppointment(Appointment appointment){
 		this.appointmentsList.insert(appointment);
+		this.schedule.insertAtFirst(new Diary(appointment));
 	}
 	
 	public void removeAppointment(Appointment appointment){
 		this.appointmentsList.remove(appointment);
+		this.schedule.deleteInDiary(appointment.getId()) ;
+	}
+	
+	public LinkedList<Diary> getSchedule(){
+		return schedule;
 	}
 
 	public SplayTree<PatientDTO> getPatientsList() {
@@ -71,7 +79,7 @@ public class DoctorDTO implements Comparable<DoctorDTO> {
 	public BinaryTree<ClinicalCase> getClinicalCaseList(){
 		return this.clinicalCaseList;
 	}
-
+	
 	public int compareTo(DoctorDTO arg0) {
 		if(this.id > arg0.getId()){
 			return 1;

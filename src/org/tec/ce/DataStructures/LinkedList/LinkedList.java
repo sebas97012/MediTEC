@@ -1,5 +1,8 @@
 package org.tec.ce.DataStructures.LinkedList;
 
+import org.tec.ce.MediTEC.dto.Diary;
+import java.util.Date;
+
 /**
  * Created by Arturo on 20/3/2017.
  * Clase que implementa el concepto de lista enlazada
@@ -174,5 +177,37 @@ public class LinkedList<T extends Comparable<T>>{
         }
         System.out.println("");
     }
+    
+    
+    @SuppressWarnings("deprecation")
+	public LinkedList<Diary> getSchedule(){
+    	LinkedList<Diary> l1 = new LinkedList<Diary>();
+    	Node<Diary> current = this.first;
+    	
+    	while(current.getNext() != null){
+    		if(current.getDataT().getDay() == (new java.util.Date().getDate()) ){
+    			if(current.getDataT().getMonth() == ( (new java.util.Date().getMonth()) + 1) ){
+    				if(current.getDataT().getYear() == ( (new java.util.Date().getYear()) + 1900) ){
+    					l1.insertAtEnd(current.getDataT());
+    				}
+    			}
+    		}
+    		current = current.getNext();
+    	}
+    	return l1;
+    }
+    
+    public void deleteInDiary(int id){
+    	Node<Diary> current = this.first;
+    	
+    	while(current != null && current.getNext() != null){
+            if(current.getNext().getDataT().getId() == id){
+                current.setNext(current.getNext().getNext());
+                this.size--;
+            }
+            current = current.getNext();
+        }
+    }
+    
 }
 

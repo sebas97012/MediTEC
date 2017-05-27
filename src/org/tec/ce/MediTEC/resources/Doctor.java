@@ -79,6 +79,13 @@ public class Doctor {
 		return Response.ok().entity(this.doctor.getAppointmentsList()).build();
 	}
 	
+	@GET
+	@Path("/get-diary")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getDiary(){
+		return Response.ok().entity(this.doctor.getSchedule()).build();
+	}
+	
 	/**
 	 * Metodo para agregar un nuevo paciente a la lista
 	 * @param patient Paciente a agregar
